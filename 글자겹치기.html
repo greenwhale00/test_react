@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            display: flex;
+            width: 1200px;
+            margin: 100px auto;
+            height: 500px;
+        }
+
+        .box>div {
+            flex: 1;
+        }
+
+        .box .left {
+            background: #333;
+        }
+
+        .box .right {
+            background: #ddd;
+        }
+
+        .box h2 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+        }
+
+        .box h2::before {
+            content: "나는 바보다.";
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>나는 바보다.</h2>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
