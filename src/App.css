@@ -1,3 +1,7 @@
+
+figure.on {color: #f00; transition: 0.7s;}
+
+
 header h1.on {color: #f00;}
 header h2.on {color: #f00;}
 
@@ -44,3 +48,4 @@ header h2.on {color: #f00;}
 .GNB .smenu>li~li { 
   border-top: 1px solid #ddd;
 }
+

@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import './App.css';
-
+import MainSlider from './component/MainSlider';
 
 const DB = [
   {
@@ -43,36 +43,42 @@ function App() {
   const [CB, setCB] = useState("");
   const [TG, setTG] = useState(false);
   return (
-    <header>
-      <h1 className={CB} onClick={() => setCB('on')}>LOGO</h1>
-      <h2 className={`ggg ${TG ? 'on' : ''}`}>toggle class</h2>
-      <button onClick={() => setTG(!TG)}>class 토글</button>
-      <nav className='GNB'>
-        <ul>
-          {
-            DB.map((it, idx) => (<li key={idx}>
-              <a href={it.link}>{it.content}</a>
-              <ul className='smenu'>
-                {
-                  it.submenu.map((smenu, idx) => <li key={idx}>
-                    <a href={smenu.link}>{smenu.content}</a>
-                  </li>)
-                }
+    <div className='Wrap'>
+      <header>
+        <h1 className={CB} onClick={() => setCB('on')}>LOGO</h1>
+        <h2 className={`ggg ${TG ? 'on' : ''}`}>toggle class</h2>
+        <button onClick={() => setTG(!TG)}>class 토글</button>
+        <nav className='GNB'>
+          <ul>
+            {
+              DB.map((it, idx) => (<li key={idx}>
+                <a href={it.link}>{it.content}</a>
+                <ul className='smenu'>
+                  {
+                    it.submenu.map((smenu, idx) => <li key={idx}>
+                      <a href={smenu.link}>{smenu.content}</a>
+                    </li>)
+                  }
 
-                {/* <li>
+                  {/* <li>
               <a href="">
                 {it.submenu[0].content}
               </a>
             </li> */}
-              </ul>
-            </li>))
-          }
+                </ul>
+              </li>))
+            }
 
-        </ul>
+          </ul>
 
-      </nav>
+        </nav>
 
-    </header>
+      </header>
+      <main>
+        <MainSlider />
+      </main>
+    </div>
+
 
 
   );
