@@ -24,33 +24,40 @@ const MainSlider = () => {
     }
     return (
         <>
+            <section className='MainVisual'>
+                <Slider {...slideSet} ref={slideRef} className='main_slider'>
+                    {
+                        SLIDE.map
+                            ((slide, idx) =>
+                                <figure className={`ggg item0${slide.slideid} ${idx === num ? 'on' : ''}`} key={slide.slideid}>
+                                    <div className='slide-box'>
+                                        <h2>{slide.content}</h2>
+                                        <p>{slide.des}</p>
+                                        <a href={slide.link}>more</a>
+                                    </div>
+                                </figure>)
+                    }
+                </Slider>
+                {console.log(slideRef.current)}
+                <div> 0{num + 1} / <span> 0{SLIDE.length}</span></div>
+                <div className='arrows'>
+                    <button onClick={() => slideRef.current.slickPrev()}>Prev</button>
+                    <button onClick={() => slideRef.current.slickNext()}>Next</button>
+                </div>
+                <ul className='dots'>
+                    {
+                        SLIDE.map((dots, idx) => <li className={idx === num ? 'on' : ''}
+                            onClick={() => slideRef.current.slickGoTo(idx)}
+                            key={dots.slideid}>{dots.slideid}</li>)
+                    }
+                </ul>
+                <div className='content'>
+                    <div>
+                        {SLIDE[num]?.des}
+                    </div>
+                </div>
+            </section>
 
-            <Slider {...slideSet} ref={slideRef}>
-                {
-                    SLIDE.map
-                        ((slide, idx) =>
-                            <figure className={`ggg item0${slide.slideid} ${idx === num ? 'on' : ''}`} key={slide.slideid}>
-                                <div className='slide-box'>
-                                    <h2>{slide.content}</h2>
-                                    <p>{slide.des}</p>
-                                    <a href={slide.link}>more</a>
-                                </div>
-                            </figure>)
-                }
-            </Slider>
-            {console.log(slideRef.current)}
-            <div> 0{num + 1} / <span> 0{SLIDE.length}</span></div>
-            <div className='arrows'>
-                <button onClick={() => slideRef.current.slickPrev()}>Prev</button>
-                <button onClick={() => slideRef.current.slickNext()}>Next</button>
-            </div>
-            <ul className='dots'>
-                {
-                    SLIDE.map((dots, idx) => <li className={idx === num ? 'on' : ''}
-                        onClick={() => slideRef.current.slickGoTo(idx)}
-                        key={dots.slideid}>{dots.slideid}</li>)
-                }
-            </ul>
         </>
 
     )
