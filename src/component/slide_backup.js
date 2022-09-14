@@ -19,13 +19,13 @@ const MainSlider = () => {
         afterChange: index => setNum(index),
     }
     return (
-        <section className='MainVisual'>
-            <Slider {...slideSet} ref={slideRef} className='main_slider'>
+        <>
+            <Slider {...slideSet} ref={slideRef}>
                 {
                     SLIDE.map(
                         (slide, idx) =>
-                            <figure className={`itm0${slide.slideid} ${idx === num ? 'on' : ''}`} key={slide.slideid}>
-                                <div className='inner'>
+                            <figure className={`item0${slide.slideid} ${idx === num ? 'on' : ''}`} key={slide.slideid}>
+                                <div className='slide-box'>
                                     <h2>{slide.content}</h2>
                                     <p>{slide.des}</p>
                                     <a href={slide.link}>more</a>
@@ -34,20 +34,26 @@ const MainSlider = () => {
                     )
                 }
             </Slider>
-            <div className='num'>0{num + 1} / <span>0{SLIDE.length}</span></div>
-            <div className="slide_handler">
+            {console.log(slideRef.current)}
+            <div>0{num + 1} / <span>0{SLIDE.length}</span></div>
+            <div className="arrows">
                 <button onClick={() => slideRef.current.slickPrev()}>prev</button>
                 <button onClick={() => slideRef.current.slickNext()}>next</button>
             </div>
-            <ul className="slide_dots">
+            <ul className="dots">
                 {
                     SLIDE.map((dots, idx) => <li className={idx === num ? 'on' : ''}
                         onClick={() => slideRef.current.slickGoTo(idx)}
-                        key={dots.slideid}><span>{dots.content}</span></li>)
+                        key={dots.slideid}>{dots.slideid}</li>)
                 }
             </ul>
-
-        </section>
+            <div className="content">
+                <div>
+                    {/* ?. 문법 이해하기... Null 병합 연산자(??), 옵셔널 체이닝(?.) */}
+                    {SLIDE[num]?.des}
+                </div>
+            </div>
+        </>
 
     )
 }

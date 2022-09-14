@@ -1,17 +1,20 @@
-
 import { useState } from 'react';
 import './App.css';
-import MainSlider from './component/MainSlider';
-
+import DoubleText from './DoubleText'
+import Slick00 from './Slick00';
+import MainVisual from './Slick00';
+import GitUser from './GitUser';
+import SyncSlider from './component/SyncSlider'
 const DB = [
   {
     id: 1,
     content: "menu01",
     link: "/s1",
     submenu: [
-      { content: "submenu011", link: "/1" },
-      { content: "submenu012", link: "/2" },
-      { content: "submenu013", link: "/3" },
+      { content: "smenu011", link: "/1" },
+      { content: "smenu012", link: "/2" },
+      { content: "smenu013", link: "/3" },
+
     ]
   },
   {
@@ -19,9 +22,10 @@ const DB = [
     content: "menu02",
     link: "/s1",
     submenu: [
-      { content: "submenu021", link: "/1" },
-      { content: "submenu022", link: "/2" },
-      { content: "submenu023", link: "/3" },
+      { content: "smenu021", link: "/1" },
+      { content: "smenu022", link: "/2" },
+      { content: "smenu023", link: "/3" },
+
     ]
   },
   {
@@ -29,29 +33,27 @@ const DB = [
     content: "menu03",
     link: "/s1",
     submenu: [
-      { content: "submenu031", link: "/1" },
-      { content: "submenu032", link: "/2" },
-      { content: "submenu033", link: "/3" },
+      { content: "smenu031", link: "/1" },
+      { content: "smenu032", link: "/2" },
+      { content: "smenu033", link: "/3" },
+
     ]
   }
 ]
-
-
-
 
 function App() {
   const [CB, setCB] = useState("");
   const [TG, setTG] = useState(false);
   return (
     <div className='Wrap'>
-      <header>
+      {/* <header>
         <h1 className={CB} onClick={() => setCB('on')}>LOGO</h1>
         <h2 className={`ggg ${TG ? 'on' : ''}`}>toggle class</h2>
         <button onClick={() => setTG(!TG)}>class 토글</button>
         <nav className='GNB'>
           <ul>
             {
-              DB.map((it, idx) => (<li key={idx}>
+              DB.map((it, idx) => <li key={idx}>
                 <a href={it.link}>{it.content}</a>
                 <ul className='smenu'>
                   {
@@ -59,27 +61,16 @@ function App() {
                       <a href={smenu.link}>{smenu.content}</a>
                     </li>)
                   }
-
-                  {/* <li>
-              <a href="">
-                {it.submenu[0].content}
-              </a>
-            </li> */}
                 </ul>
-              </li>))
+              </li>)
             }
-
           </ul>
-
         </nav>
-
-      </header>
+      </header> */}
       <main>
-        <MainSlider />
+        <SyncSlider />
       </main>
     </div>
-
-
 
   );
 }

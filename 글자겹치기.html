@@ -11,7 +11,7 @@
             position: relative;
             display: flex;
             width: 1200px;
-            margin: 100px auto;
+            margin: 300px auto;
             height: 500px;
         }
 
@@ -41,9 +41,14 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%;
+            width: 0;
             overflow: hidden;
             white-space: nowrap;
+            transition: 0.5s;
+        }
+
+        .box h2.on::before {
+            width: 50%;
         }
     </style>
 </head>
@@ -54,6 +59,19 @@
         <div class="left"></div>
         <div class="right"></div>
     </div>
+    <button>CL</button>
+    <script>
+        document.querySelector('button').addEventListener('click', function () {
+            document.querySelector('.box h2').classList.toggle('on')
+        });
+
+        window.addEventListener('scroll', function () {
+            let sct = window.scrollY;
+            sct > 0
+                ? document.querySelector('.box h2').classList.add('on')
+                : document.querySelector('.box h2').classList.remove('on')
+        })
+    </script>
 </body>
 
 </html>
